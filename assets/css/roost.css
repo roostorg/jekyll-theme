@@ -62,6 +62,7 @@ header {
   padding-block: 0.5em;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 header nav {
