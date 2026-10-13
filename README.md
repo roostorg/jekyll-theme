@@ -2,6 +2,8 @@
 
 A shared Jekyll theme for ROOST sites on [GitHub Pages](https://docs.github.com/en/pages), with ROOST brand colors, typography, header, and footer.
 
+The goal is to make it super easy to spin up a ROOST-branded mini site in the short term… and maybe migrate the main website to this in the longer-term?
+
 ## Usage
 
 Add the theme to your site's `_config.yml`:
