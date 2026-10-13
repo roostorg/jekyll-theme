@@ -1,0 +1,48 @@
+{% assign hash = site.time | date: '%s' %}
+{% assign title = page.title | default: site.title %}
+{% assign description = page.description | default: site.description %}
+{% assign icon = site.icon | default: '/assets/images/icon.svg' | absolute_url %}
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="{{ site.theme-color | default: '#24291a' }}" />
+  <meta property="og:type" content="website" />
+
+  <title>{% if page.title %}{{ page.title }} &sdot; {% endif %}{{ site.title }}</title>
+  <meta property="og:site_name" content="{{ site.title }}" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta name="twitter:title" content="{{ title }}">
+  <meta itemprop="name" content="{{ title }}" />
+
+  <meta itemprop="logo" content="{{ icon }}" />
+  <link rel="icon" href="{{ icon }}" type="image/svg+xml">
+
+  {% assign card = page.card | default: site.card %}
+  {% if card %}
+    {% assign card = card | absolute_url | append: '?v=' | append: hash %}
+    <meta property="og:image" content="{{ card }}" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="960" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ card }}">
+  {% endif %}
+
+  <meta name="description" content="{{ description }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta itemprop="description" content="{{ description }}" />
+  <meta name="twitter:description" content="{{ description }}">
+
+  {% if site.mastodon %}
+    <link rel="me" href="{{ site.mastodon.url }}" />
+    <meta name="fediverse:creator" content="{{ site.mastodon.handle }}" />
+  {% endif %}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="{{ '/assets/css/roost.css' | relative_url | append: '?v=' | append: hash }}">
+
+  {% include head-custom.html %}
+</head>

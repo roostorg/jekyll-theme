@@ -1,0 +1,9 @@
+{% assign source_url = site.source_url | default: site.github.repository_url %}
+<header>
+  <nav>
+    <a href="https://roost.tools">← ROOST.tools main site</a>
+    {% if source_url %}
+      <a href="{{ source_url }}" class="button">Source Code</a>
+    {% endif %}
+  </nav>
+</header>

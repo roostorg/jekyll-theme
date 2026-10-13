@@ -1,0 +1,22 @@
+title: ROOST Jekyll Theme
+description: A shared Jekyll theme for ROOST sites on GitHub Pages.
+
+# Normally inferred from the git remote; set explicitly so local builds work
+# before the repo is published.
+repository: roostorg/jekyll-theme
+
+mastodon:
+  handle: "@roost@hachyderm.io"
+  url: "https://hachyderm.io/@roost"
+
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - NOTES.md
+  - README.md
+  - vendor
