@@ -29,8 +29,26 @@ All settings are optional.
 | `theme-color` | `#24291a` | Browser UI color |
 | `icon` | ROOST mark | Favicon, relative to the site root |
 | `card` | None | 1920×960 social preview image, relative to the site root; pages can set their own |
-| `source_url` | The site's GitHub repository | "Source Code" button in the header |
+| `cta.title`, `cta.url` | "Source Code", the site's GitHub repository | Button at the end of the header; set `cta: false` to hide it |
 | `mastodon.url`, `mastodon.handle` | None | Mastodon verification and author attribution |
+
+The header always shows the ROOST mark (linking to roost.tools) and your site's title (linking to its home page). To use a different call to action:
+
+```yaml
+cta:
+  title: Join Discord
+  url: https://discord.gg/5Csqnw2FSQ
+```
+
+### Navigation
+
+Every page with a `title` is listed in the header and footer automatically, except the home page (the site title already links there). Pages are sorted by title; use front matter to adjust:
+
+| Front matter | Use |
+|--------------|-----|
+| `order` | Number to sort by; ordered pages come before the rest |
+| `nav_title` | Shorter label for the navigation, if the page title is long |
+| `hidden` | Set to `true` to leave the page out |
 
 ### Customizing
 
