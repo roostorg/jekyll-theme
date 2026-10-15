@@ -1,9 +1,21 @@
-{% assign source_url = site.source_url | default: site.github.repository_url %}
+{% if site.cta != false %}
+  {% assign cta_url = site.cta.url | default: site.github.repository_url %}
+  {% assign cta_title = site.cta.title | default: 'Source Code' %}
+  {% unless cta_url contains '://' %}{% assign cta_url = cta_url | relative_url %}{% endunless %}
+{% endif %}
 <header>
-  <nav>
-    <a href="https://roost.tools">← ROOST.tools main site</a>
-    {% if source_url %}
-      <a href="{{ source_url }}" class="button">Source Code</a>
+  <nav aria-label="Main">
+    <div class="brand">
+      <a href="https://roost.tools" class="roost-mark">
+        <svg viewBox="0 0 949.7 1200" role="img" aria-label="ROOST.tools">
+          <path fill="currentColor" d="M 949.7,415.2 V 153.9 C 949.7,68.9 880.8,0 795.7,0 H 522 L 711.5,189.5 416,482.2 V 189.4 H 0 l 416,416 v 0 c 0,0 158.7,158.7 158.7,158.7 h -210 v 266.8 L 656.8,1200 949.7,1030.9 v -266.8 0 0 c 0,0 -194.9,-195 -194.9,-195 h 41 c 85,0 153.9,-68.9 153.9,-153.9 z M 364.7,237.7 V 481.6 L 120.8,237.7 Z M 416,812.4 h 215.3 v 313.5 L 416,1001.3 Z m 482.4,188.9 -215.3,124.3 V 812.4 H 898.4 Z M 877.2,764.1 H 647.3 l -195,-195 H 682.2 Z M 449.2,520.9 784.1,189.4 642.9,48.2 H 790.5 C 850,48.2 898.3,96.4 898.3,156 V 413.2 C 898.3,472.7 850.1,521 790.5,521 H 449.1 Z" />
+        </svg>
+      </a>
+      <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+    </div>
+    {% if cta_url %}
+      <a href="{{ cta_url }}" class="button">{{ cta_title }}</a>
     {% endif %}
+    {% include navigation.html %}
   </nav>
 </header>

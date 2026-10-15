@@ -1,0 +1,17 @@
+{% assign nav_pages = site.pages
+  | where_exp: "p", "p.title"
+  | where_exp: "p", "p.url != '/'"
+  | where_exp: "p", "p.hidden != true"
+  | where_exp: "p", "p.redirect == nil" %}
+{% assign ordered = nav_pages | where_exp: "p", "p.order != nil" | sort: "order" %}
+{% assign unordered = nav_pages | where_exp: "p", "p.order == nil" | sort_natural: "title" %}
+{% assign nav_pages = ordered | concat: unordered %}
+{% if nav_pages.size > 0 %}
+  <ul class="navigation">
+    {% for p in nav_pages %}
+      <li>
+        <a href="{{ p.url | relative_url }}"{% if page.url == p.url %} aria-current="page"{% endif %}>{{ p.nav_title | default: p.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

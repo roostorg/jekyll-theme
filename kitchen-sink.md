@@ -1,7 +1,8 @@
 ---
-title: Kitchen sink
+title: Kitchen Sink
 description: Common content rendered with the ROOST Jekyll theme.
 permalink: /kitchen-sink/
+order: 1
 ---
 
 # Kitchen sink

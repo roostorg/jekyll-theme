@@ -1,4 +1,10 @@
+{% capture navigation %}{% include navigation.html %}{% endcapture %}
 <footer>
+  {% if navigation contains '<ul' %}
+    <nav aria-label="Footer">
+      {{ navigation }}
+    </nav>
+  {% endif %}
   <p>ROOST (Robust Open Online Safety Tools) is a 501(c)(3) public charity. Contributions are tax-deductible. EIN: 33-3305434.</p>
   <img src="{{ '/assets/images/roost-gradient-grid.webp' | relative_url }}" alt="ROOST" />
 </footer>
